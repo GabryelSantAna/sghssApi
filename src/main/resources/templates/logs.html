@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs de Auditoria</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+    <h1>Logs de Auditoria</h1>
+    <button onclick="listarLogs()">Atualizar Logs</button>
+    <ul id="logsLista"></ul>
+	
+	
+	<h2>Exportar Logs de Auditoria</h2>
+	<button onclick="baixarLogsPdf()">Baixar PDF</button>
+	<button onclick="baixarLogsCsv()">Baixar CSV</button>
+
+	<script>
+	    function baixarLogsPdf() {
+	        window.location.href = "/api/logs/exportar/pdf";
+	    }
+
+	    function baixarLogsCsv() {
+	        window.location.href = "/api/logs/exportar/csv";
+	    }
+	</script>
+
+
+    <script>
+        function listarLogs() {
+            axios.get("/api/logs", {
+                headers: { "Authorization": "Bearer SEU_TOKEN" }
+            })
+            .then(response => {
+                let lista = document.getElementById("logsLista");
+                lista.innerHTML = "";
+                response.data.forEach(log => {
+                    let li = document.createElement("li");
+                    li.innerText = `${log.dataHora} - ${log.usuario}: ${log.acao}`;
+                    lista.appendChild(li);
+                });
+            })
+            .catch(error => {
+                document.getElementById("logsLista").innerHTML = "Erro ao buscar logs.";
+            });
+        }
+    </script>
+
+</body>
+</html>

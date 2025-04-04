@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Prescrições - SGHSS</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+    <h1>Gerenciamento de Prescrições</h1>
+
+    <!-- Emitir Prescrição -->
+    <h2>Emitir Prescrição</h2>
+    <form id="prescricaoForm">
+        <label for="pacienteId">ID do Paciente:</label>
+        <input type="number" id="pacienteId" required>
+        <label for="medicoId">ID do Médico:</label>
+        <input type="number" id="medicoId" required>
+        <textarea id="descricao" placeholder="Descrição da Prescrição" required></textarea>
+        <button type="submit">Emitir</button>
+    </form>
+
+    <p id="mensagemPrescricao"></p>
+
+    <!-- Listar Prescrições -->
+    <h2>Prescrições do Paciente</h2>
+    <label for="pacienteBusca">ID do Paciente:</label>
+    <input type="number" id="pacienteBusca" required>
+    <button onclick="listarPrescricoes()">Buscar Prescrições</button>
+
+    <ul id="prescricoesLista"></ul>
+
+    <script>
+        document.getElementById("prescricaoForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let pacienteId = document.getElementById("pacienteId").value;
+            let medicoId = document.getElementById("medicoId").value;
+            let descricao = document.getElementById("descricao").value;
+
+            axios.post("/api/prescricoes/emitir", null, {
+                params: { pacienteId, medicoId, descricao },
+                headers: { "Authorization": "Bearer SEU_TOKEN" }
+            })
+            .then(response => {
+                document.getElementById("mensagemPrescricao").innerText = "Prescrição emitida com sucesso!";
+            })
+            .catch(error => {
+                document.getElementById("mensagemPrescricao").innerText = "Erro ao emitir prescrição.";
+            });
+        });
+
+        function listarPrescricoes() {
+            let pacienteId = document.getElementById("pacienteBusca").value;
+
+            axios.get(`/api/prescricoes/${pacienteId}`, {
+                headers: { "Authorization": "Bearer SEU_TOKEN" }
+            })
+            .then(response => {
+                let lista = document.getElementById("prescricoesLista");
+                lista.innerHTML = "";
+                response.data.forEach(p => {
+                    let li = document.createElement("li");
+                    li.innerText = `${p.descricao} - Emitido em ${p.dataEmissao}`;
+                    lista.appendChild(li);
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>

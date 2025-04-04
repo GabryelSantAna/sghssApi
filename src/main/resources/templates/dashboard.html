@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SGHSS</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <h1>Dashboard do Sistema</h1>
+
+    <h2>Consultas</h2>
+    <canvas id="consultasChart"></canvas>
+
+    <h2>Médicos vs. Pacientes</h2>
+    <canvas id="usuariosChart"></canvas>
+
+    <h2>Exames Enviados</h2>
+    <canvas id="examesChart"></canvas>
+
+    <h2>Horários Mais Agendados</h2>
+    <canvas id="horariosChart"></canvas>
+
+    <script>
+        fetch('/api/dashboard')
+            .then(response => response.json())
+            .then(data => {
+                // 🔹 Gráfico de Consultas
+                const ctxConsultas = document.getElementById('consultasChart').getContext('2d');
+                new Chart(ctxConsultas, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Agendadas', 'Realizadas', 'Canceladas'],
+                        datasets: [{
+                            label: 'Consultas',
+                            data: [data.consultasAgendadas, data.consultasRealizadas, data.consultasCanceladas],
+                            backgroundColor: ['blue', 'green', 'red']
+                        }]
+                    }
+                });
+
+                // 🔹 Gráfico de Médicos vs. Pacientes
+                const ctxUsuarios = document.getElementById('usuariosChart').getContext('2d');
+                new Chart(ctxUsuarios, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Pacientes', 'Médicos'],
+                        datasets: [{
+                            label: 'Usuários',
+                            data: [data.totalPacientes, data.totalMedicos],
+                            backgroundColor: ['purple', 'orange']
+                        }]
+                    }
+                });
+
+                // 🔹 Gráfico de Exames Enviados
+                const ctxExames = document.getElementById('examesChart').getContext('2d');
+                new Chart(ctxExames, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Exames Enviados'],
+                        datasets: [{
+                            label: 'Total de Exames',
+                            data: [data.totalExames],
+                            backgroundColor: ['cyan']
+                        }]
+                    }
+                });
+
+                // 🔹 Gráfico de Horários Mais Agendados
+                const ctxHorarios = document.getElementById('horariosChart').getContext('2d');
+                const horariosLabels = Object.keys(data.horariosMaisAgendados);
+                const horariosValores = Object.values(data.horariosMaisAgendados);
+
+                new Chart(ctxHorarios, {
+                    type: 'bar',
+                    data: {
+                        labels: horariosLabels,
+                        datasets: [{
+                            label: 'Consultas por Horário',
+                            data: horariosValores,
+                            backgroundColor: 'darkblue'
+                        }]
+                    }
+                });
+            });
+    </script>
+
+</body>
+</html>

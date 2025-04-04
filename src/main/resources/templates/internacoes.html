@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Internações - SGHSS</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+    <h1>Gerenciamento de Internações</h1>
+
+    <!-- Listar Leitos Disponíveis -->
+    <h2>Leitos Disponíveis</h2>
+    <button onclick="listarLeitos()">Atualizar Lista</button>
+    <ul id="leitosLista"></ul>
+
+    <!-- Internar Paciente -->
+    <h2>Internar Paciente</h2>
+    <form id="internacaoForm">
+        <label for="pacienteId">ID do Paciente:</label>
+        <input type="number" id="pacienteId" required>
+        <label for="leitoId">ID do Leito:</label>
+        <input type="number" id="leitoId" required>
+        <button type="submit">Internar</button>
+    </form>
+    <p id="mensagemInternacao"></p>
+
+    <!-- Listar Internações de um Paciente -->
+    <h2>Internações do Paciente</h2>
+    <label for="pacienteBusca">ID do Paciente:</label>
+    <input type="number" id="pacienteBusca" required>
+    <button onclick="listarInternacoes()">Buscar Internações</button>
+    <ul id="internacoesLista"></ul>
+
+    <!-- Dar Alta -->
+    <h2>Dar Alta</h2>
+    <form id="altaForm">
+        <label for="internacaoId">ID da Internação:</label>
+        <input type="number" id="internacaoId" required>
+        <button type="submit">Conceder Alta</button>
+    </form>
+    <p id="mensagemAlta"></p>
+
+    <script>
+        function listarLeitos() {
+            axios.get("/api/leitos/disponiveis", {
+                headers: { "Authorization": "Bearer SEU_TOKEN" }
+            })
+            .then(response => {
+                let lista = document.getElementById("leitosLista");
+                lista.innerHTML = "";
+                response.data.forEach(leito => {
+                    let li = document.createElement("li");
+                    li.innerText = `Leito ${leito.numero} - Tipo: ${leito.tipo}`;
+                    lista.appendChild(li);
+                });
+            })
+            .catch(error => {
+                document.getElementById("leitosLista").innerHTML = "Erro ao buscar leitos.";
+            });
+        }
+
+        document.getElementById("internacaoForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let pacienteId = document.getElementById("pacienteId").value;
+            let leitoId = document.getElementById("leitoId").value;
+
+            axios.post("/api/internacoes/internar", null, {
+                params: { pacienteId, leitoId },
+                headers: { "Authorization": "Bearer SEU_TOKEN" }
+            })
+            .then(response => {
+                document.getElementById("mensagemInternacao").innerText = "Paciente internado com sucesso!";
+            })
+            .catch(error => {
+                document.getElementById("mensagemInternacao").innerText = "Erro ao internar paciente.";
+            });
+        });
+
+        function listarInternacoes() {
+            let pacienteId = document.getElementById("pacienteBusca").value;
+
+            axios.get(`/api/internacoes/${pacienteId}`, {
+                headers: { "Authorization": "Bearer SEU_TOKEN" }
+            })
+            .then(response => {
+                let lista = document.getElementById("internacoesLista");
+                lista.innerHTML = "";
+                response.data.forEach(internacao => {
+                    let li = document.createElement("li");
+                    li.innerText = `Paciente: ${internacao.paciente.nome} - Leito ${internacao.leito.numero} - Entrada: ${internacao.dataEntrada}`;
+                    lista.appendChild(li);
+                });
+            })
+            .catch(error => {
+                document.getElementById("internacoesLista").innerHTML = "Erro ao buscar internações.";
+            });
+        }
+
+        document.getElementById("altaForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let internacaoId = document.getElementById("internacaoId").value;
+
+            axios.put(`/api/internacoes/alta/${internacaoId}`, null, {
+                headers: { "Authorization": "Bearer SEU_TOKEN" }
+            })
+            .then(response => {
+                document.getElementById("mensagemAlta").innerText = "Alta concedida com sucesso!";
+            })
+            .catch(error => {
+                document.getElementById("mensagemAlta").innerText = "Erro ao conceder alta.";
+            });
+        });
+    </script>
+
+</body>
+</html>

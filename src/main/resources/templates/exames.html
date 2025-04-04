@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Exames - SGHSS</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+    <h1>Gerenciamento de Exames</h1>
+
+    <!-- Upload de Exame -->
+    <h2>Enviar Exame</h2>
+    <form id="uploadForm">
+        <label for="pacienteId">ID do Paciente:</label>
+        <input type="number" id="pacienteId" required>
+        <input type="file" id="fileInput" required>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <p id="uploadMessage"></p>
+
+    <!-- Listar Exames -->
+    <h2>Lista de Exames</h2>
+    <label for="pacienteBusca">ID do Paciente:</label>
+    <input type="number" id="pacienteBusca" required>
+    <button onclick="listarExames()">Buscar Exames</button>
+
+    <ul id="examesLista"></ul>
+
+    <script>
+        document.getElementById("uploadForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let pacienteId = document.getElementById("pacienteId").value;
+            let fileInput = document.getElementById("fileInput").files[0];
+
+            let formData = new FormData();
+            formData.append("file", fileInput);
+
+            axios.post(`/api/exames/upload/${pacienteId}`, formData, {
+                headers: { "Authorization": "Bearer SEU_TOKEN" }
+            })
+            .then(response => {
+                document.getElementById("uploadMessage").innerText = "Exame enviado com sucesso!";
+            })
+            .catch(error => {
+                document.getElementById("uploadMessage").innerText = "Erro ao enviar exame.";
+            });
+        });
+
+        function listarExames() {
+            let pacienteId = document.getElementById("pacienteBusca").value;
+
+            axios.get(`/api/exames/${pacienteId}`, {
+                headers: { "Authorization": "Bearer SEU_TOKEN" }
+            })
+            .then(response => {
+                let examesLista = document.getElementById("examesLista");
+                examesLista.innerHTML = "";
+
+                response.data.forEach(exame => {
+                    let li = document.createElement("li");
+                    li.innerHTML = `${exame.nomeArquivo} - <a href="/api/exames/download/${exame.urlArquivo}" target="_blank">Baixar</a>`;
+                    examesLista.appendChild(li);
+                });
+            })
+            .catch(error => {
+                document.getElementById("examesLista").innerHTML = "Erro ao buscar exames.";
+            });
+        }
+    </script>
+
+</body>
+</html>

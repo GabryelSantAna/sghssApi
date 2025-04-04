@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Relatórios - SGHSS</title>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+	<h1>Gerenciamento de Relatórios</h1>
+
+	<!-- Baixar Histórico Clínico -->
+	<h2>Baixar Relatório Administrativo</h2> <label for="pacienteId">ID do Paciente:</label>
+	<input type="number" id="pacienteId" required>
+	<button onclick="baixarRelatorioAdmin()">Baixar PDF</button>
+
+	<script>
+	    function baixarRelatorioAdmin() {
+	        window.location.href = "/api/relatorios/administrativo";
+	    }
+	</script>
+	</script>
+
+</body>
+
+</html>
