@@ -141,4 +141,4 @@ git clone https://github.com/seu-usuario/sghss.git
 ---
 
 ## 📄 Licença
-Projeto desenvolvido para fins acadêmicos. Todos os direitos reservados. 📜
+Este projeto está licenciado sob os termos da [Licença MIT](LICENSE). ✔️
