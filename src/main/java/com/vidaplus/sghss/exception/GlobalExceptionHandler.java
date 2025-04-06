@@ -1,4 +1,4 @@
-/*package com.vidaplus.sghss.exception;
+package com.vidaplus.sghss.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,4 +23,3 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errorResponse);
     }
 }
-*/

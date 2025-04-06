@@ -782,3 +782,91 @@ Caused by: java.lang.IllegalArgumentException: A filter chain that matches any r
 2025-04-04 02:42:58 [RMI TCP Connection(73)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-04-04 02:42:58 [RMI TCP Connection(73)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
 2025-04-04 02:42:58 [RMI TCP Connection(73)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.
+2025-04-04 20:09:00 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-04-04 20:09:00 [restartedMain] INFO  com.vidaplus.sghss.SghssApplication - Starting SghssApplication using Java 21.0.3 with PID 19200 (C:\Users\byels\Documents\workspace-spring-tool-suite-4-4.24.0.RELEASE\sghssApi\target\classes started by byels in C:\Users\byels\Documents\workspace-spring-tool-suite-4-4.24.0.RELEASE\sghssApi)
+2025-04-04 20:09:00 [restartedMain] INFO  com.vidaplus.sghss.SghssApplication - No active profile set, falling back to 1 default profile: "default"
+2025-04-04 20:09:00 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-04-04 20:09:00 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-04-04 20:09:01 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-04 20:09:01 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 112 ms. Found 9 JPA repository interfaces.
+2025-04-04 20:09:02 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-04-04 20:09:02 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-04-04 20:09:02 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-04 20:09:02 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.36]
+2025-04-04 20:09:02 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-04-04 20:09:02 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2369 ms
+2025-04-04 20:09:02 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-04 20:09:02 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-04-04 20:09:02 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-04-04 20:09:03 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-04 20:09:03 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-04 20:09:03 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [undefined/unknown]
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: <unknown>
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-04 20:09:04 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-04 20:09:04 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-04-04 20:09:05 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7c44ec0b
+2025-04-04 20:09:05 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-04-04 20:09:05 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-04 20:09:06 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-04-04 20:09:06 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-04-04 20:09:07 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-04 20:09:08 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-04-04 20:09:08 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-04-04 20:09:08 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-04-04 20:09:08 [restartedMain] INFO  com.vidaplus.sghss.SghssApplication - Started SghssApplication in 9.381 seconds (process running for 11.012)
+2025-04-04 20:09:57 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-04 20:09:57 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-04 20:09:57 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-04-04 20:09:58 [http-nio-8080-exec-1] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
+2025-04-04 20:09:58 [http-nio-8080-exec-1] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '125.456.789-00' for key 'pacientes.UK1mj2svx930q0tkx1d18qa9rtf'
+2025-04-04 20:09:59 [http-nio-8080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [Duplicate entry '125.456.789-00' for key 'pacientes.UK1mj2svx930q0tkx1d18qa9rtf'] [insert into pacientes (cpf,data_nascimento,email,endereco,nome,telefone) values (?,?,?,?,?,?)]; SQL [insert into pacientes (cpf,data_nascimento,email,endereco,nome,telefone) values (?,?,?,?,?,?)]; constraint [pacientes.UK1mj2svx930q0tkx1d18qa9rtf]]
+2025-04-04 20:13:17 [http-nio-8080-exec-9] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000
+2025-04-04 20:13:17 [http-nio-8080-exec-9] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '138.456.789-00' for key 'pacientes.UK1mj2svx930q0tkx1d18qa9rtf'
+2025-04-04 20:13:17 [http-nio-8080-exec-9] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [Duplicate entry '138.456.789-00' for key 'pacientes.UK1mj2svx930q0tkx1d18qa9rtf'] [insert into pacientes (cpf,data_nascimento,email,endereco,nome,telefone) values (?,?,?,?,?,?)]; SQL [insert into pacientes (cpf,data_nascimento,email,endereco,nome,telefone) values (?,?,?,?,?,?)]; constraint [pacientes.UK1mj2svx930q0tkx1d18qa9rtf]]
+2025-04-04 20:15:00 [http-nio-8080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.security.authentication.BadCredentialsException: Bad credentials]
+2025-04-04 20:16:34 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound - No mapping for POST /api/consulta
+2025-04-04 20:16:34 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound - No endpoint POST /api/consulta.
+2025-04-04 20:17:32 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound - No mapping for POST /api/consulta
+2025-04-04 20:17:32 [http-nio-8080-exec-4] WARN  o.s.web.servlet.PageNotFound - No endpoint POST /api/consulta.
+2025-04-04 20:18:27 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound - No mapping for POST /api/consulta
+2025-04-04 20:18:27 [http-nio-8080-exec-8] WARN  o.s.web.servlet.PageNotFound - No endpoint POST /api/consulta.
+2025-04-04 20:18:30 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /api/consulta
+2025-04-04 20:18:30 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound - No endpoint GET /api/consulta.
+2025-04-04 20:18:36 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound - No mapping for PUT /api/consulta
+2025-04-04 20:18:36 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound - No endpoint PUT /api/consulta.
+2025-04-04 20:19:17 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for PUT /api/auth/consulta
+2025-04-04 20:19:17 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No endpoint PUT /api/auth/consulta.
+2025-04-04 20:19:20 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound - No mapping for POST /api/auth/consulta
+2025-04-04 20:19:20 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound - No endpoint POST /api/auth/consulta.
+2025-04-04 20:19:23 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /api/auth/consulta
+2025-04-04 20:19:23 [http-nio-8080-exec-1] WARN  o.s.web.servlet.PageNotFound - No endpoint GET /api/auth/consulta.
+2025-04-04 20:20:26 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /api/auth/consulta
+2025-04-04 20:20:26 [http-nio-8080-exec-3] WARN  o.s.web.servlet.PageNotFound - No endpoint GET /api/auth/consulta.
+2025-04-04 20:20:49 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /api/auth/consulta
+2025-04-04 20:20:49 [http-nio-8080-exec-6] WARN  o.s.web.servlet.PageNotFound - No endpoint GET /api/auth/consulta.
+2025-04-04 20:22:01 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /api/auth/consulta
+2025-04-04 20:22:01 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound - No endpoint GET /api/auth/consulta.
+2025-04-04 20:22:07 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /api/consulta
+2025-04-04 20:22:07 [http-nio-8080-exec-9] WARN  o.s.web.servlet.PageNotFound - No endpoint GET /api/consulta.
+2025-04-04 20:22:22 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for POST /api/consulta
+2025-04-04 20:22:22 [http-nio-8080-exec-2] WARN  o.s.web.servlet.PageNotFound - No endpoint POST /api/consulta.
+2025-04-04 20:22:24 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound - No mapping for POST /api/consulta
+2025-04-04 20:22:24 [http-nio-8080-exec-10] WARN  o.s.web.servlet.PageNotFound - No endpoint POST /api/consulta.
+2025-04-04 20:26:35 [http-nio-8080-exec-4] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2025-04-04 20:26:46 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /api/consultas/
+2025-04-04 20:26:46 [http-nio-8080-exec-7] WARN  o.s.web.servlet.PageNotFound - No endpoint GET /api/consultas/.
+2025-04-04 20:26:54 [http-nio-8080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.RuntimeException: Consulta não encontrada]
+2025-04-04 20:27:45 [RMI TCP Connection(25)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2025-04-04 20:27:45 [RMI TCP Connection(25)-127.0.0.1] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-04 20:27:45 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-04-04 20:27:45 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-04-04 20:27:45 [RMI TCP Connection(25)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-04-04 20:27:45 [RMI TCP Connection(25)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-04 20:27:45 [RMI TCP Connection(25)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-04-04 20:27:45 [RMI TCP Connection(25)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
